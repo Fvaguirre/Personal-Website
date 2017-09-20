@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load staticfiles %}
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Homepage</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link href='https://fonts.googleapis.com/css?family=Ubuntu Mono' rel='stylesheet'>
+        <link rel="stylesheet" href="{% static 'home/stylesheet.css'%}"/>
+        <link link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#top">
+                        <span class="glyphicon glyphicon-home" style="font-size: 1em;"></span>
+                    </a>
+                </div>
+                <ul class="nav navbar-nav">
+                  <li class="active"><a href="#AboutMe">About Me</a></li>
+                  <li><a href="#Projects">Projects</a></li>
+                  <li><a href="#ContactMe">Contact Me</a></li>
+                </ul>
+            </div>
+        </nav>
+
+    <div class="parallax-window" data-parallax="scroll" data-image-src="{% static 'home/images/welcome3.jpg' %}">
+        <div style="padding-top:250px" class='text-center'>
+              <h1 id="Home" style="color:#fff; font-weight:bolder;">Hello, world!</h1>
+        </div>
+    </div>
+    <div id="AboutMe" class="window-wrapper">
+        <div class="container" style="padding-left: 7em;">
+        <div>
+            <img class="img-circle" src="{% static 'home/images/me.jpg' %}" style="float: left;">
+            <div style="padding-left: 9em; padding-top: 3em">
+                <h1>Frank Vega-Aguirre</h1>
+
+                 <p>Student | Programmer | Avid Learner </p>
+                    {# Github/LinkedIn #}
+                    <a href="http://www.linkedin.com/in/FrankVegaAguirre"><i class="fa fa-linkedin-square" style="color:black;font-size:30px;"></i></a>
+                    <a href="https://github.com/Fvaguirre"><i class="fa fa-github-square" style="color:black;font-size:30px;"></i></a>
+                    <a href="https://www.instagram.com/fvaguirre/"><i class="fa fa-instagram" style="color: black;font-size:30px;"></i></a>
+            </div>
+        </div>
+            <h2>About me</h2>
+                <p>I began my journey into the world of programming by tinkering with video game mods.
+                    A relatively simple papryus scripting system kept me busy, but not enthralled. My
+                    realization of my passion for computer science and programming came alongside an
+                    introductory computer science course during my first semester of my freshman year in
+                    college. Since then, I have come to realize both the power and limitations of computers.
+                    Data structures and algorithms in C++ put into scope the application of computer programming
+                    to problem-solving and theory, while numerical computing techniques and MatLab shed light on
+                    the shortcomings and mathematical applicatons of these powerful, but flawed machines.
+                    With that said, I have found computer science and programming to be completely compatible with
+                    my desire to tinker, to theorize, and to solve.
+                </p>
+        </div>
+    </div>
+
+    <div class="parallax-window" data-parallax="scroll" data-image-src="{% static 'home/images/projects.jpeg' %}"></div>
+        <div class="window-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="jumbotron" style="text-align: center;">
+                            <h2>Skills</h2>
+                            <ul style="font-size: medium;">
+                                <li>Bilingual (English and Spanish)</li>
+                                <li>Customer Service Skills</li>
+                                <li>Team Skills</li>
+                                <li>Problem Solving Skills</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="jumbotron" style="text-align: center;">
+                            <h2>Education</h2>
+                            <div>
+                                <h4><span class="glyphicon glyphicon-education">
+                                </span> B.S. Computer Science</h4>
+                                <p style="font-size: medium;">Rensselaer Polytechnic Institute (2016-2020)</p>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="jumbotron" style="text-align: center;">
+                            <h2>Interests</h2>
+                                <P style="font-size: medium;">My hobbies and interests include hiking, coffee,
+                                    video games, piano, live music (from an orchestra to
+                                    a rock concert), terrible movies, learning, spending time
+                                    with friends, and sometimes binging unrelated Youtube
+                                    videos.
+                                </P>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      <div class="parallax-window" data-parallax="scroll" data-image-src="{% static 'home/images/html.jpg' %}">
+        <div style="padding-top:250px" class='text-center'>
+
+            <h1 style="color:white;font-weight:bolder;"><span>My Projects</span></h1>
+        </div>
+    </div>
+    <div id="Projects" class="window-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7">
+                    <div class="jumbotron">
+                        <h2>My Latest Projects</h2>
+                        {% if all_projects %}
+                            <ul>
+                                {% for project in all_projects %}
+
+                                <li>
+                                    <h3><a href="#">{{ project.name }}</a> </h3>
+                                    <div class="container">
+                                    </div>
+                                    <p>{{ project.description }}</p>
+                                </li>
+                                {% endfor %}
+                            </ul>
+
+                        {% endif %}
+                    </div>
+
+                </div>
+                <div class="col-md-5">
+                    <div class="jumbotron">
+                        <h2>Technical Skills</h2>
+
+                            <div class="skillbar clearfix " data-percent="55%">
+                                <div class="skillbar-title" style="background: #d35400;"><span>HTML/CSS/Javascript</span></div>
+                                <div class="skillbar-bar" style="background: #e67e22;"></div>
+                                <div class="skill-bar-percent">55%</div>
+                            </div> <!-- End Skill Bar -->
+
+                            <div class="skillbar clearfix " data-percent="60%">
+                                <div class="skillbar-title" style="background: #2980b9;"><span>Python</span></div>
+                                <div class="skillbar-bar" style="background: #3498db;"></div>
+                                <div class="skill-bar-percent">60%</div>
+                            </div> <!-- End Skill Bar -->
+
+                            <div class="skillbar clearfix " data-percent="65%">
+                                <div class="skillbar-title" style="background: #2c3e50;"><span>C++</span></div>
+                                <div class="skillbar-bar" style="background: #2c3e50;"></div>
+                                <div class="skill-bar-percent">65%</div>
+                            </div> <!-- End Skill Bar -->
+
+                            <div class="skillbar clearfix " data-percent="50%">
+                                <div class="skillbar-title" style="background: #46465e;"><span>C</span></div>
+                                <div class="skillbar-bar" style="background: #5a68a5;"></div>
+                                <div class="skill-bar-percent">50%</div>
+                            </div> <!-- End Skill Bar -->
+
+                            <div class="skillbar clearfix " data-percent="25%">
+                                <div class="skillbar-title" style="background: #333333;"><span>Java</span></div>
+                                <div class="skillbar-bar" style="background: #525252;"></div>
+                                <div class="skill-bar-percent">25%</div>
+                            </div> <!-- End Skill Bar -->
+
+                            <div class="skillbar clearfix " data-percent="60%">
+                                <div class="skillbar-title" style="background: #27ae60;"><span>Django</span></div>
+                                <div class="skillbar-bar" style="background: #2ecc71;"></div>
+                                <div class="skill-bar-percent">60%</div>
+                            </div> <!-- End Skill Bar -->
+
+                            <div class="skillbar clearfix " data-percent="50%">
+                                <div class="skillbar-title" style="background: #c416cc;"><span>Matlab</span></div>
+                                <div class="skillbar-bar" style="background: #c416cc;"></div>
+                                <div class="skill-bar-percent">50%</div>
+                            </div> <!-- End Skill Bar -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="parallax-window" data-parallax="scroll" data-image-src="{% static 'home/images/python.jpg' %}">
+         <div style="padding-top:250px;text-align:center;">
+             <h1 style="font-weight:bolder;color:white;"><span>Contact Me</span></h1>
+        </div>
+    </div>
+        <div class="window-wrapper" id="ContactMe">
+            <div class="container">
+                <div class="jumbotron">
+                    <h2>Contact</h2>
+                        <P>
+                        <span class="glyphicon glyphicon-map-marker"></span>&nbsp;Troy NY
+                        </p>
+                        <P>
+                            <a href="mailto:vegaaf@rpi.edu"><span class="glyphicon glyphicon-envelope"></span>&nbsp;vegaaf@rpi.edu</a>
+                        </P>
+                        <P>
+                            <a href="https://github.com/Fvaguirre"><span class="glyphicon glyphicon-link"></span>&nbsp;https://github.com/Fvaguirre</a>
+                        </P>
+                        <P>
+                            <a href=http://www.linkedin.com/in/FrankVegaAguirre"><span class="glyphicon glyphicon-link"></span>&nbsp;http://www.linkedin.com/in/FrankVegaAguirre</a>
+                        </P>
+
+
+                </div>
+            </div>
+        </div>
+
+    <div class="parallax-window" data-parallax="scroll" data-image-src="{% static 'home/images/end.png' %}"></div>
+        <div class="window-wrapper">
+
+        </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!--Skill Bar-->
+    <script src="{% static 'home/animated_bar_graph.js' %}"></script>
+    <script src="{% static 'home/parallax.min.js' %}" charset="utf-8"></script>
+    <script>
+    $('.parallax-window').parallax();
+    </script>
+
+    </body>
+</html>
